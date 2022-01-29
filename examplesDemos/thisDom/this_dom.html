@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        main,
+        section,
+        h1,
+        span {
+            padding: 10px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <section>
+            <h1><span>Hello</span> world!</h1>
+        </section>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        console.log("butts");
+        //We can test each scenario by uncommenting one event handler at a time:
+
+        //`this` with arrow function:
+        //  //will log the window - [object Window] - to the console no matter which element is clicked
+        $("body").click((event) => {
+            console.log("NEW CLICK");
+            console.log("`this` with arrow function:");
+            console.log(this);
+            console.log("--------");
+        });
+
+        //`this` with function expression:
+        //  //will log "BODY" to the console no matter which element is clicked
+        $("body").click(function (event) {
+            console.log("`this` with function expression:");
+            console.log(this.tagName);
+            console.log("--------");
+        });
+
+        //`event.currentTarget`:
+        //  //will log "BODY" to the console no matter which element is clicked
+        $("body").click(function (event) {
+            console.log("`event.currentTarget`");
+            console.log(event.currentTarget.nodeName);
+            console.log("--------");
+        });
+
+        //`event.target`:
+        //  //will log, "SPAN", "H1", "SECTION", or "MAIN" to console depending on which element is clicked
+        $("body").click(function (event) {
+            console.log(`event.target`);
+            console.log(event.target.nodeName);
+            console.log("END CLICK");
+        });
+    </script>
+</body>
+
+</html>
